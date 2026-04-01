@@ -16,11 +16,11 @@ story_ids = response_ids.json()
 
 # Taking the categories to match the keywords in the title of the API
 categories = {
-    "technology": ["ai", "software", "tech", "programming", "computer"],
-    "science": ["nasa", "space", "research", "physics", "biology"],
-    "sports": ["football", "cricket", "nba", "match", "tournament"],
-    "worldnews": ["government", "election", "war", "policy"],
-    "entertainment": ["movie", "music", "netflix", "film"]
+    "technology": ["ai", "software", "tech", "code", "computer", "data", "cloud", "api", "gpu", "llm"],
+    "worldnews": ["war", "government", "country", "president", "election", "climate", "attack", "global"],
+    "sports": ["nfl", "nba", "fifa", "sport", "game", "team", "player", "league", "championship"],
+    "science": ["research", "study", "space", "physics", "biology", "discovery", "nasa", "genome"],
+    "entertainment": ["movie", "film", "music", "netflix", "game", "book", "show", "award", "streaming"]
 }
 
 
@@ -112,7 +112,7 @@ for story_id in story_ids:
 
         category_count[category] += 1
 
-        print(f"Collected {category}: {category_count[category]}")
+        # print(f"Collected {category}: {category_count[category]}")
 
 
     except Exception as error:
@@ -124,10 +124,12 @@ for story_id in story_ids:
 print(collection_total_data)
 
 
+# saving the total final data into the data folder
 os.makedirs("data" , exist_ok=True)
 
-filename = f"data/trends_{datetime.now().strftime("%y-%m-%d")}.json"
+filename = f"data/trends_{datetime.now().strftime("%y%m%d")}.json"
 
+# Using file handling we are dumping the data into json format
 with open(filename , "w" , encoding="utf-8") as f:
     json.dump(collection_total_data , f , indent=4)
 
