@@ -133,5 +133,6 @@ filename = f"data/trends_{datetime.now().strftime("%y%m%d")}.json"
 with open(filename , "w" , encoding="utf-8") as f:
     json.dump(collection_total_data , f , indent=4)
 
-print(f"length of the data is {len(collection_total_data)}")
-print(f"data saved in {filename}")
+print(f"Collected  {len(collection_total_data)} stories. Saved to {filename}")
+# print(f"length of the data is {len(collection_total_data)}")
+# print(f"data saved in {filename}")
