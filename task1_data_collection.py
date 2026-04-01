@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import os
 from datetime import datetime
 
 # First i am taking the Id's of the top stories
@@ -123,6 +124,12 @@ for story_id in story_ids:
 print(collection_total_data)
 
 
+os.makedirs("data" , exist_ok=True)
 
+filename = f"data/trends_{datetime.now().strftime("%y-%m-%d")}.json"
 
+with open(filename , "w" , encoding="utf-8") as f:
+    json.dump(collection_total_data , f , indent=4)
 
+print(f"length of the data is {len(collection_total_data)}")
+print(f"data saved in {filename}")
