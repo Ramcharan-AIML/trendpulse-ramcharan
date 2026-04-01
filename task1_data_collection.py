@@ -11,7 +11,6 @@ headers = {"User-Agent": "TrendPulse/1.0"}
 response_ids = requests.get(ids_url , headers = headers)
 
 story_ids = response_ids.json()
-print(story_ids)
 
 
 # Taking the categories to match the keywords in the title of the API
@@ -29,10 +28,99 @@ def assigned_keyword(title):
     title = title.lower()
 
     for category, keywords in categories.items():
-        if keyword in title:
-            return keyword
+        for keyword in keywords:
+            if keyword in title:
+                return category
     return None
 
+# Taking the empty list for storing all data after getting the top stories list 
+collection_total_data = []
+
+
+# Maintaining the category count for upto 25
+category_count = {
+    "technology": 0,
+    "science": 0,
+    "sports": 0,
+    "worldnews": 0,
+    "entertainment": 0
+}
+
+
+# Fetch each story and process
+
+for story_id in story_ids:
+
+    # all_full = True
+
+    # for count in category_count.values():
+    #     if count >= 25:
+    #         all_full = False
+    #         break
+    # if all_full:
+    #     break
+
+    # Stop if count reaches to the 25 limit 
+    if all(count >=25 for count in category_count.values()):
+        break
+
+
+    # Taking the stories by id's 
+    url_story = f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json"
+
+
+    # Using try except method for exception handling to find the errors
+    try:
+        response = requests.get(url_story , headers=headers)
+        # checking status code , if it is 200, load the data from the api 
+        if response.status_code == 200:
+            data = response.json()
+        else:
+            continue
+
+        # checking the title is there or not in the data
+        if "title" in data:
+            category = assigned_keyword(data["title"])
+        else:
+            continue
+
+        if data is None:
+            continue
+
+        # if category is not there , skip to next
+        if category is None:
+            continue
+
+        # if the count in the category has already above 25 , skip the step
+        if category_count[category] >=25:
+            continue
+
+
+        # collecting the all the fields from the api
+        required_record = {
+            "post_id": data.get("id"),
+            "title": data.get("title"),
+            "subreddit": category,   # our assigned category
+            "score": data.get("score", 0),
+            "num_comments": data.get("descendants", 0),
+            "author": data.get("by"),
+            "collected_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+
+        collection_total_data.append(required_record)
+
+        category_count[category] += 1
+
+        print(f"Collected {category}: {category_count[category]}")
+
+
+    except Exception as error:
+        print(f"Error occured with status code{error}")
+
+            
+    time.sleep(1)
+
+print(collection_total_data)
 
 
 
