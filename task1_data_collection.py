@@ -16,11 +16,30 @@ story_ids = response_ids.json()
 
 # Taking the categories to match the keywords in the title of the API
 categories = {
-    "technology": ["ai", "software", "tech", "code", "computer", "data", "cloud", "api", "gpu", "llm"],
-    "worldnews": ["war", "government", "country", "president", "election", "climate", "attack", "global"],
-    "sports": ["nfl", "nba", "fifa", "sport", "game", "team", "player", "league", "championship"],
-    "science": ["research", "study", "space", "physics", "biology", "discovery", "nasa", "genome"],
-    "entertainment": ["movie", "film", "music", "netflix", "game", "book", "show", "award", "streaming"]
+    "technology": [
+        "ai", "software", "tech", "code", "computer", "data", "cloud", "api", "gpu", "llm",
+        "startup", "app", "developer", "engineering", "system", "open source", "github",
+        "automation", "saas", "platform", "internet", "cyber", "security", "database"
+    ],
+    "worldnews": [
+        "war", "government", "country", "president", "election", "climate", "attack", "global",
+        "politics", "economy", "inflation", "trade", "law", "policy", "minister",
+        "conflict", "nation", "crisis", "diplomacy"
+    ],
+    "sports": [
+        "nfl", "nba", "fifa", "sport", "team", "player", "league", "championship",
+        "match", "tournament", "cup", "score", "coach", "season", "win", "final"
+    ],
+    "science": [
+        "research", "study", "space", "physics", "biology", "discovery", "nasa", "genome",
+        "experiment", "scientist", "medicine", "health", "quantum", "energy",
+        "climate", "earth", "evolution", "lab"
+    ],
+    "entertainment": [
+        "movie", "film", "music", "netflix", "book", "show", "award", "streaming",
+        "tv", "series", "actor", "actress", "hollywood", "drama", "comedy",
+        "video", "youtube", "media", "content"
+    ]
 }
 
 
