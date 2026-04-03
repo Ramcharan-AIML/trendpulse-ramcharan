@@ -40,6 +40,7 @@ df['num_comments'].dtype
 
 
 
+
 # Low quality — remove stories where score is less than 5
 df.drop(df[df["score"] < 5].index, inplace=True)
 print(f'After removing nulls: {len(df)}')
