@@ -6,7 +6,7 @@ import json
 import numpy as np
 import os
 
-with open('/content/trends_260402.json' , 'r') as file:
+with open('data/trends_260402.json' , 'r') as file:
     data = json.load(file)
 
 df = pd.DataFrame(data)
@@ -47,4 +47,16 @@ print(f'After removing nulls: {len(df)}')
 # Whitespace — strip extra spaces from the title column
 df['title'] = df['title'].str.strip()
 
+# ------------------------------------------------------------------
+# 3 — Save as CSV (6 marks)
 
+
+# os.makedirs('data' , exist_ok=True)
+
+# creating the csv file as name with trends_clean.csv
+df.to_csv("data/trends_clean.csv" , index=False)
+
+print(f'\nSaved {len(df)} rows to data/trends_clean.csv \n')
+
+# printing the stories per category
+print(f"Stories per category:{df['subreddit'].value_counts()}")
