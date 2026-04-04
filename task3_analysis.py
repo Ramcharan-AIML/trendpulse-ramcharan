@@ -51,6 +51,8 @@ most_commented_story_value = df.groupby('title')['num_comments'].max().max()
 
 print(f"Most commented story : {most_commented_story} - {most_commented_story_value} comments")
 
+# ---------------------------------------------------------------------------------
+
 # 3 — Add New Columns (5 marks)
 # Add these two new columns to your DataFrame:
 
@@ -60,6 +62,8 @@ print(f"Most commented story : {most_commented_story} - {most_commented_story_va
 df['engagement'] = (df['num_comments'] / (df['score'] + 1))
 df['is_popular'] = np.where(df['score'] > df['score'].mean() , True , False)
 df
+
+# -----------------------------------------------------------------------------------
 
 # 4 — Save the Result (3 marks)
 # Save the updated DataFrame (with the 2 new columns) to data/trends_analysed.csv
