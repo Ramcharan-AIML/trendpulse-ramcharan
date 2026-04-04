@@ -19,3 +19,33 @@ print(f'Average Comments : {round(avg_comments,2)}')
 
 # ----------------------------------------------------------------------------
 
+# 2 — Basic Analysis with NumPy (8 marks)
+# Use NumPy to answer these questions and print the results:
+# What is the mean, median, and standard deviation of score?
+mean_score = np.mean(df['score'])
+median_score = np.median(df['score'])
+std_score = np.std(df['score'])
+
+print(f'\nMean score : {mean_score}')
+print(f'Median score : {median_score}')
+print(f'Std deviation : {round(std_score,2)}')
+
+# What is the highest score and lowest score?
+max_score = np.max(df['score'])
+min_score = np.min(df['score'])
+
+print(f'\nMax score : {max_score}')
+print(f'Min score : {min_score}')
+
+# Which category has the most stories?
+most_stories = df['subreddit'].value_counts().idxmax()
+max_value = df['subreddit'].value_counts().max()
+
+print(f'Most stories in : {most_stories} {max_value} stories')
+
+# Which story has the most comments? Print its title and comment count.
+most_commented_story = df.groupby('title')['num_comments'].max().sort_values(ascending=False).idxmax()
+most_commented_story_value = df.groupby('title')['num_comments'].max().max()
+
+print(f"Most commented story : {most_commented_story} - {most_commented_story_value} comments")
+
