@@ -59,3 +59,12 @@ df['engagement'] = (df['num_comments'] / (df['score'] + 1))
 df['is_popular'] = np.where(df['score'] > df['score'].mean() , True , False)
 df
 
+# 4 — Save the Result (3 marks)
+# Save the updated DataFrame (with the 2 new columns) to data/trends_analysed.csv
+
+os.makedirs("data" , exist_ok=True)
+
+df.to_csv("data/trends_analysed.csv", index=False)
+
+# Print a confirmation message
+print("Saved to data/trends_analysed.csv")
