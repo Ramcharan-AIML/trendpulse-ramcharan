@@ -49,3 +49,13 @@ most_commented_story_value = df.groupby('title')['num_comments'].max().max()
 
 print(f"Most commented story : {most_commented_story} - {most_commented_story_value} comments")
 
+# 3 — Add New Columns (5 marks)
+# Add these two new columns to your DataFrame:
+
+# Column  Formula
+# engagement  num_comments / (score + 1) — how much discussion a story gets per upvote
+# is_popular  True if score > average score, else False
+df['engagement'] = (df['num_comments'] / (df['score'] + 1))
+df['is_popular'] = np.where(df['score'] > df['score'].mean() , True , False)
+df
+
