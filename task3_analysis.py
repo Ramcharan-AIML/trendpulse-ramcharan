@@ -1,9 +1,11 @@
+# Task 3 — Analysis with Pandas & NumPy
+
 import pandas as pd
 import numpy as np
 
 # 1 — Load and Explore (4 marks)
 # Load data/trends_clean.csv into a Pandas DataFrame
-df = pd.read_csv("/content/data/trends_clean.csv")
+df = pd.read_csv("data/trends_clean.csv")
 
 # Print the first 5 rows
 print(df.head(5))
@@ -62,7 +64,7 @@ df
 # 4 — Save the Result (3 marks)
 # Save the updated DataFrame (with the 2 new columns) to data/trends_analysed.csv
 
-os.makedirs("data" , exist_ok=True)
+# os.makedirs("data" , exist_ok=True)
 
 df.to_csv("data/trends_analysed.csv", index=False)
 
