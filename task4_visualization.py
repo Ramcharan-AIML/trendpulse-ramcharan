@@ -1,0 +1,45 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+
+# 1 — Setup (2 marks)
+# Load data/trends_analysed.csv into a DataFrame
+df = pd.read_csv("data/trends_analysed.csv")
+df
+
+# Create a folder called outputs/ if it doesn't exist
+os.makedirs("outputs" , exist_ok=True)
+
+# Use plt.savefig() before any plt.show() on all charts
+
+# --------------------------------------------------------------------------
+
+# 2 — Chart 1: Top 10 Stories by Score (6 marks)
+# Create a horizontal bar chart showing the top 10 stories by score
+# Use the story title on the y-axis (shorten titles longer than 50 characters)
+# Add a title and axis labels
+# Save as outputs/chart1_top_stories.png
+top_10_score = df.sort_values(by='score',ascending=False).head(10)
+
+top_10_score['short_title'] = top_10_score['title'].apply(lambda x : x[:30]  if len(x) > 30 else x)
+# print(top_10_score)
+
+plt.figure(figsize=(10,6))
+
+sns.barplot(data = df , x = top_10_score['score'], y = top_10_score['short_title'] , palette='Set2' )
+
+plt.title("Top 10 stories by score" , fontsize = 18 ,fontweight = "bold")
+plt.xlabel("Score" , fontsize = 16)
+plt.ylabel("Title" , fontsize = 16)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+
+
+plt.savefig("outputs/chart1_top_posts.png")
+
+plt.show()
+
+
+print("Chart saved successfully!")
