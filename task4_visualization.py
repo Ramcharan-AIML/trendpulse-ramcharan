@@ -94,3 +94,47 @@ plt.tight_layout()
 plt.savefig("outputs/chart3_scatter.png")
 
 plt.show()
+
+
+# ----------------------------------------------------------------------------
+
+# Bonus — Dashboard (+3 marks)
+# Combine all 3 charts into one figure:
+
+# Use plt.subplots(1, 3) or plt.subplots(2, 2) to lay them out together
+# Add an overall title: "TrendPulse Dashboard"
+# Save as outputs/dashboard.png
+
+plt.figure(figsize=(14, 10))
+plt.suptitle("TrendPulse Dashboard", fontsize=18, fontweight="bold")
+
+plt.subplot(2,2,1)
+
+sns.barplot(data = df , x = top_10_score['score'], y = top_10_score['short_title'] , palette='Set2' )
+plt.title("Top 10 stories by score" , fontsize = 14)
+plt.xlabel("Score" , fontsize = 12)
+plt.ylabel("Title" , fontsize = 12)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+plt.subplot(2,2,2)
+sns.barplot(data = category_story , x = 'subreddit' , y= 'count' , palette= 'Set1')
+plt.title("Stories came from each category" , fontsize = 14 )
+plt.xlabel("Category" , fontsize = 12)
+plt.ylabel("Count" , fontsize = 12)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+# 3 - Chart
+plt.subplot(2,2,3)
+sns.scatterplot(data =df, x = 'score' , y = 'num_comments' , hue='is_popular')
+plt.title("Score vs Comments (Popularity Analysis", fontsize = 14 )
+plt.xlabel("Score" , fontsize = 12)
+plt.ylabel("Num_Comments" , fontsize = 12)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+plt.savefig("outputs/dashboard.png")
+
+plt.tight_layout()
+plt.show()
