@@ -52,7 +52,6 @@ df['title'] = df['title'].str.strip()
 # 3 — Save as CSV (6 marks)
 
 
-
 # creating the csv file as name with trends_clean.csv
 df.to_csv("data/trends_clean.csv" , index=False)
 
