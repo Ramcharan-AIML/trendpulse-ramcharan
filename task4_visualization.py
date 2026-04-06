@@ -138,3 +138,5 @@ plt.savefig("outputs/dashboard.png")
 
 plt.tight_layout()
 plt.show()
+
+print("Dashboard printed successfully")
