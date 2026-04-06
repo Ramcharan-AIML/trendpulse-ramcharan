@@ -66,7 +66,6 @@ df
 
 # -----------------------------------------------------------------------------------
 
-
 # 4 — Save the Result (3 marks)
 # Save the updated DataFrame (with the 2 new columns) to data/trends_analysed.csv
 
