@@ -70,3 +70,27 @@ plt.savefig("outputs/chart2_categories.png")
 plt.show()
 
 
+# --------------------------------------------------------------------------------
+
+# 4 — Chart 3: Score vs Comments (6 marks)
+# Create a scatter plot with score on the x-axis and num_comments on the y-axis
+# Colour the dots differently for popular vs non-popular stories (use the is_popular column)
+# Add a legend, title, and axis labels
+# Save as outputs/chart3_scatter.png
+
+df
+
+plt.figure(figsize=(10,6))
+
+sns.scatterplot(data =df, x = 'score' , y = 'num_comments' , hue='is_popular')
+
+plt.title("Score vs Comments (Popularity Analysis", fontsize = 18 ,fontweight = "bold")
+plt.xlabel("Score" , fontsize = 16)
+plt.ylabel("Num_Comments" , fontsize = 16)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+
+plt.savefig("outputs/chart3_scatter.png")
+
+plt.show()
