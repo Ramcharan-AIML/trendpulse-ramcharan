@@ -42,4 +42,31 @@ plt.savefig("outputs/chart1_top_posts.png")
 plt.show()
 
 
-print("Chart saved successfully!")
+# ---------------------------------------------------------------------------------
+
+# 3 — Chart 2: Stories per Category (6 marks)
+# Create a bar chart showing how many stories came from each category
+# Use a different colour for each bar
+# Add a title and axis labels
+# Save as outputs/chart2_categories.png
+
+category_story= df['subreddit'].value_counts().reset_index()
+
+category_story.Columns = ['subreddit' , 'count']
+
+plt.figure(figsize=(8,6))
+
+sns.barplot(data = category_story , x = 'subreddit' , y= 'count' , palette= 'Set1')
+
+plt.title("Stories came from each category" , fontsize = 18 ,fontweight = "bold")
+plt.xlabel("Category" , fontsize = 16)
+plt.ylabel("Count" , fontsize = 16)
+plt.grid(alpha = 0.3)
+plt.tight_layout()
+
+
+plt.savefig("outputs/chart2_categories.png")
+
+plt.show()
+
+
